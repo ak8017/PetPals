@@ -1,4 +1,6 @@
 # import necessary libraries
+from .models import Pet
+from flask_sqlalchemy import SQLAlchemy
 import os
 from flask import (
     Flask,
@@ -16,15 +18,13 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'DATABASE_URI', '') or "sqlite:///db.sqlite"
 
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-
-from .models import Pet
 
 
 # create route that renders index.html template
