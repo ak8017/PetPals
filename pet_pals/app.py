@@ -18,9 +18,11 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URI', '') or "sqlite:///db.sqlite"
+DATABASE_URI = "postgresql://cfnxqnlholguih:f482e595c2b612857600ba4ef6e165ba56621c922c8d25afda09e78c2d5f8181@ec2-34-202-54-225.compute-1.amazonaws.com:5432/degekdaghvur1a"
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+#     'DATABASE_URI', '') or "sqlite:///db.sqlite"
 
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
